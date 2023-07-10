@@ -5,7 +5,7 @@ import { default as RuiIcon } from '@/components/icons/Icon.vue';
 import { default as RuiCheckbox } from '@/components/forms/checkbox/Checkbox.vue';
 import { useRotkiTheme } from '@/composables/theme';
 import type { InitThemeOptions } from '@/types/theme';
-import '@/style.css';
+import '@/style.scss';
 
 export * from '@/all-icons';
 
