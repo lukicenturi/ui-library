@@ -20,6 +20,17 @@ const baseColorsCombination = Object.fromEntries(
   ]),
 );
 
+const textColorsCombination = Object.fromEntries(
+  ['light', 'dark'].map((theme) => [
+    theme,
+    {
+      DEFAULT: `var(--rui-${theme}-text-primary)`,
+      secondary: `var(--rui-${theme}-text-secondary)`,
+      disabled: `var(--rui-${theme}-text-disabled)`,
+    },
+  ]),
+);
+
 const contextColorsCombination = Object.fromEntries(
   ['light', 'dark'].map((theme) => [
     theme,
@@ -71,6 +82,7 @@ module.exports = {
     extend: {
       colors: {
         rui: {
+          ...textColorsCombination,
           ...baseColorsCombination,
           ...contextColorsCombination,
           ...adaptiveContextColorCombination,

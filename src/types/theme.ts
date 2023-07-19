@@ -46,8 +46,8 @@ export interface ThemeContent {
   setThemeConfig: (newConfig: ThemeConfig) => void;
 }
 
-const createDefaultTheme = (theme: 'light' | 'dark') =>
-  Object.fromEntries(
+const createDefaultTheme = (theme: 'light' | 'dark') => ({
+  ...Object.fromEntries(
     contextColors.map((color) => [
       color,
       {
@@ -56,7 +56,13 @@ const createDefaultTheme = (theme: 'light' | 'dark') =>
         darker: `var(--rui-${theme}-${color}-darker)`,
       },
     ]),
-  );
+  ),
+  text: {
+    DEFAULT: `var(--rui-${theme}-text-primary)`,
+    secondary: `var(--rui-${theme}-text-secondary)`,
+    disabled: `var(--rui-${theme}-text-disabled)`,
+  },
+});
 
 export const defaultTheme: ThemeConfig = {
   light: createDefaultTheme('light'),
