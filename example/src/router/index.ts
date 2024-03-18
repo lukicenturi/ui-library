@@ -53,6 +53,11 @@ const router = createRouter({
       component: () => import('@/views/TextAreaView.vue'),
     },
     {
+      path: '/sliders',
+      name: 'sliders',
+      component: () => import('@/views/SliderView.vue'),
+    },
+    {
       path: '/auto-complete',
       name: 'auto-complete',
       component: () => import('@/views/AutoCompleteView.vue'),
@@ -88,6 +93,11 @@ const router = createRouter({
       component: () => import('@/views/TooltipView.vue'),
     },
     {
+      path: '/menus',
+      name: 'menus',
+      component: () => import('@/views/MenuView.vue'),
+    },
+    {
       path: '/data-tables',
       name: 'data-tables',
       component: () => import('@/views/DataTableView.vue'),
@@ -111,6 +121,11 @@ const router = createRouter({
       path: '/badges',
       name: 'badges',
       component: () => import('@/views/BadgeView.vue'),
+    },
+    {
+      path: '/accordions',
+      name: 'accordions',
+      component: () => import('@/views/AccordionView.vue'),
     },
     {
       path: '/breakpoint',

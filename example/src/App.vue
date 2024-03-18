@@ -17,6 +17,7 @@ const navigation = ref([
       { to: { name: 'radios' }, title: 'Radio' },
       { to: { name: 'text-fields' }, title: 'Text Fields' },
       { to: { name: 'text-areas' }, title: 'Text Areas' },
+      { to: { name: 'sliders' }, title: 'Sliders' },
       { to: { name: 'auto-complete' }, title: 'Auto Complete' },
       { to: { name: 'steppers' }, title: 'Steppers' },
       { to: { name: 'progress' }, title: 'Progress' },
@@ -24,15 +25,17 @@ const navigation = ref([
       { to: { name: 'chips' }, title: 'Chips' },
       { to: { name: 'alerts' }, title: 'Alerts' },
       { to: { name: 'tooltips' }, title: 'Tooltips' },
+      { to: { name: 'menus' }, title: 'Menus' },
       { to: { name: 'data-tables' }, title: 'Data Tables' },
       { to: { name: 'dialogs' }, title: 'Dialogs' },
       { to: { name: 'cards' }, title: 'Cards' },
       { to: { name: 'tabs' }, title: 'Tabs' },
       { to: { name: 'badges' }, title: 'Badges' },
+      { to: { name: 'accordions' }, title: 'Accordions' },
     ],
   },
   {
-    title: 'Components',
+    title: 'Utilities',
     links: [
       {
         to: { name: 'breakpoint' },

@@ -98,7 +98,7 @@ const { hasError, hasSuccess } = useFormTextDetail(
 </template>
 
 <style lang="scss" module>
-$colors: 'primary', 'secondary', 'error', 'warning', 'info', 'success';
+@use '@/styles/colors.scss' as c;
 
 .wrapper {
   @apply relative flex gap-2 items-start cursor-pointer;
@@ -160,7 +160,7 @@ $colors: 'primary', 'secondary', 'error', 'warning', 'info', 'success';
 
   &.checked {
     &:not(.disabled) {
-      @each $color in $colors {
+      @each $color in c.$context-colors {
         &.#{$color} {
           .input {
             @apply bg-rui-#{$color};
@@ -197,7 +197,7 @@ $colors: 'primary', 'secondary', 'error', 'warning', 'info', 'success';
   .input {
     @apply appearance-none relative w-full h-full rounded-full bg-rui-grey-400 transition-all duration-75 ease-in-out cursor-pointer;
 
-    &:focus {
+    &:active {
       + .toggle {
         &:before {
           @apply opacity-20;
@@ -212,7 +212,7 @@ $colors: 'primary', 'secondary', 'error', 'warning', 'info', 'success';
 
     &:before {
       content: '';
-      @apply absolute w-10 h-10 bg-black rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-75 ease-in-out opacity-0;
+      @apply absolute w-10 h-10 bg-black rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all ease-in-out opacity-0;
     }
   }
 }
@@ -242,7 +242,7 @@ $colors: 'primary', 'secondary', 'error', 'warning', 'info', 'success';
 
     &.checked {
       &:not(.disabled) {
-        @each $color in $colors {
+        @each $color in c.$context-colors {
           &.#{$color} {
             .input {
               @apply bg-rui-#{$color}/[0.5];

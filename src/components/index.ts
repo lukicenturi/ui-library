@@ -28,6 +28,10 @@ import {
   type Props as SwitchProps,
 } from '@/components/forms/switch/Switch.vue';
 import {
+  default as RuiSlider,
+  type Props as SliderProps,
+} from '@/components/forms/slider/Slider.vue';
+import {
   type Props as ChipProps,
   default as RuiChip,
 } from '@/components/chips/Chip.vue';
@@ -51,6 +55,10 @@ import {
   default as RuiTooltip,
   type Props as TooltipProps,
 } from '@/components/overlays/tooltip/Tooltip.vue';
+import {
+  type Props as MenuProps,
+  default as RuiMenu,
+} from '@/components/overlays/menu/Menu.vue';
 import {
   type Props as BadgeProps,
   default as RuiBadge,
@@ -129,6 +137,18 @@ import {
   default as RuiSkeletonLoader,
   type Props as SkeletonLoaderProps,
 } from '@/components/loaders/Skeleton.vue';
+import {
+  type Props as MenuSelectProps,
+  default as RuiMenuSelect,
+} from '@/components/forms/select/MenuSelect.vue';
+import {
+  type Props as AccordionsProps,
+  default as RuiAccordions,
+} from '@/components/accordions/accordions/Accordions.vue';
+import {
+  type AccordionProps,
+  default as RuiAccordion,
+} from '@/components/accordions/accordion/Accordion.vue';
 import type {
   TableColumn as DataTableColumn,
   GroupKeys as DataTableGroupKeys,
@@ -155,6 +175,7 @@ export {
   RuiSwitch,
   RuiTextField,
   RuiTooltip,
+  RuiMenu,
   RuiDataTable,
   RuiSimpleSelect,
   RuiDialog,
@@ -169,9 +190,14 @@ export {
   RuiTextArea,
   RuiDivider,
   RuiTableRowExpander,
+  RuiMenuSelect,
+  RuiSlider,
+  RuiAccordions,
+  RuiAccordion,
   AutoCompleteProps,
   ChipProps,
   TooltipProps,
+  MenuProps,
   SimpleSelectProps,
   DataTableProps,
   DataTableColumn,
@@ -207,4 +233,8 @@ export {
   ExpandButtonProps,
   DataTableSortData,
   DataTableGroupKeys,
+  MenuSelectProps,
+  SliderProps,
+  AccordionsProps,
+  AccordionProps,
 };
