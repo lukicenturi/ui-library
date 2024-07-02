@@ -59,7 +59,7 @@ const children = computed(() => {
     align: get(align),
   };
   return tabs.map((tab, index) => {
-    let tabValue = tab.props?.tabValue ?? index;
+    let tabValue = tab.props?.['tab-value'] ?? index;
     if (tab.props?.link !== false && tab.props?.to)
       tabValue = tab.props.to;
 

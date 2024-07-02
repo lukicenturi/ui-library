@@ -8,6 +8,7 @@ export interface Props {
   grow?: boolean;
   tabValue?: number | string;
   active?: boolean;
+  activeClass?: string;
   link?: boolean;
   target?: string;
   to?: string;
@@ -27,6 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   grow: false,
   tabValue: generateId(),
   active: false,
+  activeClass: '',
   link: false,
   to: '',
   target: '_self',
@@ -46,7 +48,7 @@ const slots = defineSlots<{
   append?: (props?: object) => any;
 }>();
 
-const { target, grow, active, disabled, vertical, align, tabValue }
+const { target, grow, active, activeClass, disabled, vertical, align, tabValue }
   = toRefs(props);
 
 const css = useCssModule();
@@ -58,7 +60,7 @@ const tabClass = computed(() => [
   css[`tab--${get(align)}`],
   {
     [css['tab--grow']]: get(grow),
-    [`${css['tab--active']} active-tab`]: get(active),
+    [`${css['tab--active']} active-tab ${get(activeClass)}`]: get(active),
     [css['tab--disabled']]: get(disabled),
     [css['tab--vertical']]: get(vertical),
   },
