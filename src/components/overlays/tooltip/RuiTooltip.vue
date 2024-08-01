@@ -52,6 +52,7 @@ const {
     <slot
       name="activator"
       :open="open"
+      :close="onClose"
     />
 
     <Teleport
