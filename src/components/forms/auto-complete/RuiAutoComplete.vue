@@ -183,7 +183,7 @@ const value = computed<TItem[]>({
         if (inOptions)
           return filtered.push(inOptions);
         if (props.customValue)
-          return filtered.push(textValueToProperValue(val));
+          return filtered.push(textValueToProperValue(val, props.returnObject));
       });
 
       if (multiple || filtered.length === 0) {
@@ -208,7 +208,7 @@ const value = computed<TItem[]>({
         if (inOptions)
           return filtered.push(inOptions);
         if (props.customValue)
-          return filtered.push(textValueToProperValue(val));
+          return filtered.push(textValueToProperValue(val, props.returnObject));
       });
 
       if (get(shouldApplyValueAsSearch) && !get(recentlyFocused)) {
@@ -382,10 +382,10 @@ const inputClass = computed<string>(() => {
   return 'flex-1 min-w-0';
 });
 
-function textValueToProperValue(val: any): TItem {
+function textValueToProperValue(val: any, returnObject: boolean = false): TItem {
   const keyAttr = props.keyAttr;
   const textAttr = props.textAttr;
-  if (!keyAttr)
+  if (!keyAttr || returnObject)
     return val;
 
   return {

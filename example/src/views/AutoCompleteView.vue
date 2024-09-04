@@ -84,7 +84,6 @@ const autoComplete = ref<RuiAutoCompleteProps[]>([
 
 const autoCompleteCustom = ref<RuiAutoCompleteProps[]>([
   {
-    disabled: false,
     keyAttr: 'id',
     textAttr: 'label',
     modelValue: undefined,
@@ -96,17 +95,18 @@ const autoCompleteCustom = ref<RuiAutoCompleteProps[]>([
     keyAttr: 'id',
     textAttr: 'label',
     modelValue: undefined,
+    label: 'With error messages',
     dense: true,
     errorMessages: ['This is required'],
     hint: 'lorem ipsum dolor',
     options,
   },
   {
-    disabled: false,
-    label: 'primitive return',
     variant: 'outlined',
     keyAttr: 'id',
     textAttr: 'label',
+    dense: true,
+    label: 'With success messages',
     successMessages: ['lgtm!'],
     modelValue: undefined,
     options,
@@ -116,7 +116,36 @@ const autoCompleteCustom = ref<RuiAutoCompleteProps[]>([
     variant: 'outlined',
     keyAttr: 'id',
     textAttr: 'label',
+    label: 'Disabled',
+    dense: true,
     modelValue: undefined,
+    options,
+  },
+  {
+    variant: 'outlined',
+    textAttr: 'label',
+    keyAttr: 'id',
+    label: 'Multiple',
+    dense: true,
+    modelValue: [],
+    options,
+  },
+  {
+    variant: 'outlined',
+    textAttr: 'label',
+    label: 'Return Object',
+    dense: true,
+    modelValue: undefined,
+    options,
+  },
+  {
+    variant: 'outlined',
+    keyAttr: 'id',
+    label: 'Multiple and Return Object',
+    dense: true,
+    modelValue: [],
+    chips: true,
+    returnObject: true,
     options,
   },
 ]);
@@ -308,36 +337,41 @@ function getDisplayText(options?: SelectOption | SelectOption[]): string {
     </div>
     <h4
       class="text-h6 mt-6"
-      data-cy="auto-completes-custom-inner"
+      data-cy="auto-completes-custom"
     >
-      Auto Complete: custom activator inner content
+      Auto Complete: custom activator content
     </h4>
     <div class="grid gap-6 grid-cols-2">
       <div
-        v-for="(autoCompleteProp, i) in autoCompleteCustom"
+        v-for="(item, i) in autoCompleteCustom"
         :key="i"
         class="py-4"
       >
         <RuiAutoComplete
-          v-model="autoCompleteProp.modelValue"
+          v-model="item.modelValue"
           clearable
           auto-select-first
-          v-bind="objectOmit(autoCompleteProp, ['modelValue'])"
-          :data-cy="`auto-complete-custom-inner-${i}`"
-          :item-height="autoCompleteProp.dense ? undefined : 80"
-          :label-class="autoCompleteProp.dense ? undefined : 'h-20'"
-          variant="outlined"
+          v-bind="objectOmit(item, ['modelValue'])"
+          :data-cy="`auto-complete-custom-${i}`"
         >
-          <template #selection="{ item }">
-            {{ item.id }} | {{ item.label }}
-          </template>
-          <template #item="{ item }">
-            <span
-              class="block"
-              :class="{ 'my-4': !autoCompleteProp.dense }"
+          <template #activator="{ attrs, disabled, open, value }">
+            <RuiButton
+              class="!rounded-md border"
+              data-cy="activator"
+              variant="list"
+              :disabled="disabled"
+              v-bind="attrs"
             >
-              {{ item.label }}
-            </span>
+              {{ getDisplayText(value) }}
+              <template #append>
+                <RuiIcon
+                  class="transition"
+                  :class="[{ 'rotate-180': open }]"
+                  name="arrow-drop-down-fill"
+                  size="32"
+                />
+              </template>
+            </RuiButton>
           </template>
         </RuiAutoComplete>
       </div>
@@ -361,6 +395,7 @@ function getDisplayText(options?: SelectOption | SelectOption[]): string {
           v-bind="objectOmit(item, ['modelValue'])"
           :append-width="1.5"
           :data-cy="`auto-complete-custom-options-${i}`"
+          custom-value
         >
           <template #item.append="{ active }">
             <RuiIcon
@@ -370,7 +405,16 @@ function getDisplayText(options?: SelectOption | SelectOption[]): string {
               size="24"
             />
           </template>
+          <template #item="{ item }">
+            {{ item.label }}
+          </template>
+
+          <template #selection="{ item }">
+            {{ item.label }}
+          </template>
         </RuiAutoComplete>
+        Selected value:
+        <pre>{{ item.modelValue }}</pre>
       </div>
     </div>
     <h4
@@ -404,7 +448,8 @@ function getDisplayText(options?: SelectOption | SelectOption[]): string {
           </template>
         </RuiAutoComplete>
       </div>
-    </div><h4
+    </div>
+    <h4
       class="text-h6 mt-6"
       data-cy="auto-completes-readonly"
     >
