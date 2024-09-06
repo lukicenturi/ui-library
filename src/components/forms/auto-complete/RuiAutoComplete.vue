@@ -710,7 +710,7 @@ defineExpose({
             ref="menuRef"
           >
             <RuiButton
-              v-for="({ item, index }) in renderedData"
+              v-for="({ item, _index }) in renderedData"
               ref="renderedOptions"
               :key="getIdentifier(item)?.toString()"
               :active="isActiveItem(item)"
@@ -718,12 +718,12 @@ defineExpose({
               tabindex="0"
               variant="list"
               :class="{
-                highlighted: highlightedIndex === index,
-                [css.highlighted]: highlightedIndex === index,
+                highlighted: highlightedIndex === _index,
+                [css.highlighted]: highlightedIndex === _index,
                 [css.active]: isActiveItem(item),
               }"
-              @click="setValue(item, index)"
-              @mousedown="highlightedIndex = index"
+              @click="setValue(item, _index)"
+              @mousedown="highlightedIndex = _index"
             >
               <template #prepend>
                 <slot
