@@ -31,8 +31,6 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const modelValue = defineModel<string>({ required: true });
-
 const props = withDefaults(defineProps<TextFieldProps>(), {
   label: '',
   placeholder: '',
@@ -58,6 +56,8 @@ const emit = defineEmits<{
   (e: 'remove', value: unknown): void;
   (e: 'clear'): void;
 }>();
+
+const modelValue = defineModel<string>({ required: true });
 
 const {
   label,

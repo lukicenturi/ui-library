@@ -34,8 +34,6 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const modelValue = defineModel<string>({ required: true });
-
 const props = withDefaults(defineProps<Props>(), {
   label: '',
   placeholder: '',
@@ -62,6 +60,8 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<{
   (e: 'click:clear'): void;
 }>();
+
+const modelValue = defineModel<string>({ required: true });
 
 const {
   label,
@@ -282,6 +282,8 @@ onMounted(computeFieldHeight);
 
 :global(.dark) {
   .wrapper {
+    @apply bg-transparent;
+
     .label {
       @apply border-white/[0.42];
 
@@ -334,7 +336,7 @@ onMounted(computeFieldHeight);
 }
 
 .wrapper {
-  @apply relative w-full min-w-[12.5rem] flex items-start;
+  @apply relative w-full min-w-[12.5rem] flex items-start rounded bg-white;
 
   .inner_wrapper {
     @apply flex flex-1 pt-4;
