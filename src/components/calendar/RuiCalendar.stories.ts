@@ -1,5 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/vue3';
 import RuiCalendar, { type CalendarProps } from '@/components/calendar/RuiCalendar.vue';
+import { TimeAccuracy } from '@/components/calendar/state';
 
 type Props = CalendarProps & { modelValue?: Date | null };
 
@@ -36,7 +37,7 @@ const meta: Meta<Props> = {
     },
     timeAccuracy: {
       control: 'select',
-      options: [1, 2, 3, 4],
+      options: [TimeAccuracy.SECONDS, TimeAccuracy.MINUTE, TimeAccuracy.MILLISECONDS],
     },
   },
   component: RuiCalendar,
@@ -83,7 +84,7 @@ export const ModeDateTime: Story = {
 export const AccuracyMilliseconds: Story = {
   args: {
     mode: 'datetime',
-    timeAccuracy: 4,
+    timeAccuracy: TimeAccuracy.MILLISECONDS,
   },
 };
 

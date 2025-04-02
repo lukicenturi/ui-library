@@ -19,11 +19,11 @@ describe('calendar', () => {
       },
     });
 
-    expect(wrapper.find('.id-2023-01-02').classes()).toEqual(
+    expect(wrapper.find('.rui-id-2023-01-02').classes()).toEqual(
       expect.arrayContaining([expect.stringMatching(/is-today/)]),
     );
 
-    expect(wrapper.find('.id-2023-01-03').find('.vc-highlight').exists()).toBeTruthy();
+    expect(wrapper.find('.rui-id-2023-01-03').exists()).toBeTruthy();
   });
 
   it('min date', () => {
@@ -33,8 +33,8 @@ describe('calendar', () => {
       },
     });
 
-    expect(wrapper.find('.id-2023-01-02').find('.vc-disabled').exists()).toBeTruthy();
-    expect(wrapper.find('.id-2023-01-03').find('.vc-disabled').exists()).toBeFalsy();
+    expect(wrapper.find('.rui-id-2023-01-02').attributes('disabled')).toBe('');
+    expect(wrapper.find('.rui-id-2023-01-03').attributes('disabled')).toBeUndefined();
   });
 
   it('max date', () => {
@@ -44,7 +44,7 @@ describe('calendar', () => {
       },
     });
 
-    expect(wrapper.find('.id-2023-01-03').find('.vc-disabled').exists()).toBeFalsy();
-    expect(wrapper.find('.id-2023-01-04').find('.vc-disabled').exists()).toBeTruthy();
+    expect(wrapper.find('.rui-id-2023-01-03').attributes('disabled')).toBeUndefined();
+    expect(wrapper.find('.rui-id-2023-01-04').attributes('disabled')).toBe('');
   });
 });
