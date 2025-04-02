@@ -208,12 +208,12 @@ function handlePrev() {
 
 <style scoped>
 .menu-container {
-  @apply w-64 bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden;
+  @apply w-64 shadow-lg overflow-hidden;
 }
 
 .menu-header {
-  @apply flex items-center justify-center py-3 font-medium text-gray-800 dark:text-gray-200;
-  @apply border-b border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700;
+  @apply flex items-center justify-center p-1 font-medium text-gray-800 dark:text-gray-200;
+  @apply border-b border-rui-grey-200 dark:border-rui-grey-800 cursor-pointer hover:bg-rui-grey-100 dark:hover:bg-rui-grey-800;
 }
 
 .month-grid {

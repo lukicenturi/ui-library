@@ -137,7 +137,7 @@ function getKey(date: Date): string {
         :key="`${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`"
         type="button"
         variant="text"
-        class="day-cell"
+        class="day-cell !font-normal"
         :disabled="!isDateInRange(date)"
         :class="{
           'not-current-month': !isCurrentMonth,
@@ -156,11 +156,11 @@ function getKey(date: Date): string {
 
 <style scoped>
 .calendar-grid {
-  @apply w-full;
+  @apply w-full p-2 pt-0;
 }
 
 .calendar-weekdays {
-  @apply grid grid-cols-7 bg-gray-50 dark:bg-gray-700;
+  @apply grid grid-cols-7 pb-2;
 }
 
 .weekday-label {
@@ -168,11 +168,11 @@ function getKey(date: Date): string {
 }
 
 .calendar-days {
-  @apply grid grid-cols-7;
+  @apply grid grid-cols-7 gap-0.5;
 }
 
 .day-cell {
-  @apply h-10 w-full flex items-center justify-center text-sm rounded-full mx-auto;
+  @apply h-9 w-full flex items-center justify-center text-sm rounded-full mx-auto max-w-[2.25rem];
   @apply text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700;
 
   &.not-current-month {
@@ -180,11 +180,16 @@ function getKey(date: Date): string {
   }
 
   &.is-selected {
-    @apply bg-rui-primary text-white hover:bg-rui-primary/90;
+    @apply bg-rui-primary text-white hover:bg-rui-primary/90 dark:hover:bg-rui-primary/90;
   }
 
   &.is-today:not(.is-selected) {
-    @apply border border-rui-primary/50 font-medium;
+    @apply relative;
+
+    &:after {
+      content: '';
+      @apply absolute size-1 rounded-full bottom-1 left-1/2 transform -translate-x-1/2 bg-rui-primary;
+    }
   }
 
   &.is-disabled {

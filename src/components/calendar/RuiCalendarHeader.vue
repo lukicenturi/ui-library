@@ -111,8 +111,7 @@ function handleDateSelection(selection: MonthYearSelection) {
 
 <style scoped>
 .calendar-header {
-  @apply flex items-center justify-between px-4 py-3 border-b;
-  @apply bg-gray-50 dark:bg-gray-700 dark:border-gray-600;
+  @apply flex items-center justify-between px-4 py-3;
 }
 
 .header-title {

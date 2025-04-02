@@ -107,6 +107,14 @@ watch(
         newDate.setMilliseconds(time.getMilliseconds());
         set(model, newDate);
       }
+
+      if (get(viewMonth) !== date.getMonth()) {
+        set(viewMonth, date.getMonth());
+      }
+
+      if (get(viewYear) !== date.getFullYear()) {
+        set(viewYear, date.getFullYear());
+      }
     }
     else {
       set(model, undefined);
@@ -158,10 +166,10 @@ defineExpose({
 
 <style lang="scss">
 .rui-calendar {
-  @apply w-[18.75rem] bg-white rounded-md shadow-sm overflow-hidden border border-gray-200;
+  @apply w-[18.75rem] bg-white rounded-md shadow-sm overflow-hidden border border-rui-grey-200;
 
   &.dark {
-    @apply bg-gray-800 border-gray-700;
+    @apply bg-rui-grey-900 border-rui-grey-800;
   }
 }
 </style>
