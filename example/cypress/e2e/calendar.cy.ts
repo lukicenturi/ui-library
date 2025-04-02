@@ -8,6 +8,6 @@ describe('calendar', () => {
   it('checks for rendered calendar', () => {
     cy.contains('h2[data-cy=calendars]', 'Calendar');
 
-    cy.get('.id-2023-01-02').find('.vc-focusable').should('be.exist');
+    cy.get('.rui-id-2023-01-02.is-selected').should('be.exist');
   });
 });
