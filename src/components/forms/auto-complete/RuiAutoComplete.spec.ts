@@ -276,15 +276,39 @@ describe('autocomplete', () => {
     expect(chips).toHaveLength(1);
     expect(chips[0].text()).toBe('custom value');
 
-    await wrapper.find('input').setValue('custom value 2');
+    await wrapper.find('input').setValue('German');
     await nextTick();
     await vi.delay();
+
+    expect(document.body.querySelector('div[role=menu]')).toBeTruthy();
+
+    expect(document.body.querySelectorAll('button').length).toBe(2);
+
+    let firstButton = document.body.querySelectorAll('button')[0];
+    expect(firstButton.innerHTML).toContain('German');
+
+    const secondButton = document.body.querySelectorAll('button')[1];
+    expect(secondButton.innerHTML).toContain('Germany');
+
+    await wrapper.find('input').setValue('Germany');
+    await nextTick();
+    await vi.delay();
+
+    expect(document.body.querySelectorAll('button').length).toBe(1);
+
+    firstButton = document.body.querySelectorAll('button')[0];
+    expect(firstButton.innerHTML).toContain('Germany');
+
+    await wrapper.find('input').setValue('German');
+    await nextTick();
+    await vi.delay();
+
     await wrapper.find('[data-id=activator]').trigger('keydown.enter');
     await nextTick();
 
     expect(wrapper.emitted('update:modelValue')?.[0]).toEqual([[
       'custom value',
-      'custom value 2',
+      'German',
     ]]);
   });
 
