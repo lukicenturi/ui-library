@@ -157,6 +157,16 @@ watch(internalModelValue, (val) => {
 <style lang="scss" module>
 @use '@/styles/colors.scss' as c;
 
+:global(.dark) {
+  .wrapper {
+    .checkbox {
+      &:before {
+        @apply bg-white;
+      }
+    }
+  }
+}
+
 .wrapper {
   @apply relative flex items-start cursor-pointer -ml-[9px];
 
@@ -182,7 +192,7 @@ watch(internalModelValue, (val) => {
     &:focus {
       + .checkbox {
         &:before {
-          @apply opacity-5;
+          @apply opacity-15;
         }
       }
     }
